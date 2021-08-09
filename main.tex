@@ -96,25 +96,29 @@
  \end{frame}
 }
 
+% Define commands
+\newcommand{\pd}[1]{\partial_{#1}}
+\newcommand{\pdd}[1]{\partial_{#1}^2}
+
 %----------------------------------------------------------------------------------------
 %   TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Short title]{Full Title of the Talk} % The short title appears at the bottom of every slide (dependent on theme), the full title is only on the title page
+\title[An idealized study of flow across submarine canyons]{An idealized study of flow across submarine canyons - Analytical and numerical approaches to canyon dynamics with applications to the LoVe ocean region} % The short title appears at the bottom of every slide (dependent on theme), the full title is only on the title page
 
-\author{Kari Nordmann} % Your name
+\author{Anna Lina Petrusevi\v ci\=ut\.e Sjur} % Your name
 \institute[UiO] % Your institution as it will appear on every slide (dependent on theme), may be shorthand to save space
 {
 University of Oslo \\ % Your institution for the title page
 \medskip
-\textit{kari@mail.uio.no} % Your email address
+%\textit{kari@mail.uio.no} % Your email address
 }
-\date{\today} % Date, can be changed to a custom date
+\date{August 19, 2021} % Date, can be changed to a custom date
 
 \begin{document}
 
 {
-\usebackgroundtemplate{\includegraphics[width=\paperwidth]{figures/background.jpg}} % background of first slide
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{figures/dybdedata_stor.pdf}} % background of first slide
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \end{frame}
@@ -130,132 +134,155 @@ University of Oslo \\ % Your institution for the title page
 %----------------------------------------------------------------------------------------
 
 %------------------------------------------------
-\section{First Section} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\section{Introduction} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
 
-\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
-
-\begin{frame}
-\frametitle{Paragraphs of Text}
-Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
-
-Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
+\subsection{Motivation} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\begin{frame}{Sightings of sperm whales in Norwegian and adjacent waters}
+    \begin{figure}
+    \centering
+    \includegraphics[width = 0.5\textwidth]{figures/whalesitings_large.pdf}
+    %\missingfigure{Insert map of LoVe bathymtry here.}
+    \caption{Figure from Christensen, 1992.} %\cite{CianoJ.N2001POSW}}
+\end{figure}
 \end{frame}
 
-%------------------------------------------------
+\begin{frame}{Bleik Canyon showing 180 documented sightings of sperm whales}
+    \begin{figure}
+    \centering
+    \includegraphics[width = 0.8\textwidth]{figures/whalesitings_bleikdjupet.pdf}
+    %\missingfigure{Insert map of LoVe bathymtry here.}
+    \caption{Figure from Ciano and Huele, 2001.} %\cite{CianoJ.N2001POSW}}
+\end{figure}
+\end{frame}
 
-\begin{frame}
-\frametitle{Bullet Points}
+\begin{frame}{The Lofoten-Vesterålen ocean region}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figures/dybdedata_stor_stedsnavn.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Canyon dynamics}
+\begin{columns}
+\column{0.65\linewidth}
 \begin{itemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
+    \item Submarine canyons are steep-sided valleys cut into the seabed of a continental slope.
+    \item There is an asymmetrical response to along-shore flow in opposite direction. 
+    \item When the flow is retrograde, submarine canyons significantly alter the flow.
+    \item Zang and Lentz (2017) suggests this behaviour is due to arrested topographic waves.
 \end{itemize}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Blocks of Highlighted Text}
-\begin{block}{Block 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-\end{block}
-
-\begin{block}{Block 2}
-Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-\end{block}
-
-\begin{block}{Block 3}
-Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-\end{block}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
-\begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
-\end{enumerate}
-
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
+\column{0.35\linewidth}
+\begin{figure}
+    \centering
+    %\missingfigure{Insert a picture of submarine canyon here.}
+    \includegraphics[width=\linewidth]{figures/prograde_retrograde_sketch.pdf}
+\end{figure}
 \end{columns}
 \end{frame}
 
-%------------------------------------------------
-\section{Second Section}
-%------------------------------------------------
+\subsection{Research questions}
 
-\begin{frame}
-\frametitle{Table}
-\begin{table}
-\caption{Table caption}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{frame}{Research questions}
+    \begin{itemize}
+    \item Can quasi-geostrophic theory be used to describe flow patterns over a submarine canyon?
+    \item How does high eddy-activity affect the cross-slope exchange due to a submarine canyon?
+    \item What is the effect of periods of reversed wind on the cross-slope exchange under mean prograde flow over a canyon? 
+\end{itemize}
 \end{frame}
 
-%------------------------------------------------
+\section{Theoretical model}
 
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
+\begin{frame}{Barotropic flow}
+Use the linear barotropic quasi geostrophic vorticity equation. 
+Look at a meridional mean flow over a sloping bottom with a canyon: 
+\begin{equation*}
+    \mathbf{u} = u'\mathbf{i} + \left(V(x)+v'\right)\mathbf{j} \qquad h = \alpha x + h_T(y)
+\end{equation*}
+Assume a solution on the form
+\begin{equation*}
+    \psi' = \operatorname{Re}\left[\sum_{k,l,\omega} \hat{\psi}_{k,l}e^{ikx+ily}\right]
+\end{equation*}
+The Fourier coefficients of the streamfunction response can be written as
+\begin{equation*}
+    \hat{\psi}_{k,l} = \hat{h}_{k,l}\frac{f_0}{h_0}\left( \kappa^2 + \frac{f_0\alpha}{h_0V} + \frac{\pdd{x}V}{V} - i \frac{r\kappa^2}{Vl}\right)^{-1}
+\end{equation*}
+Arrested wave number:
+\begin{equation*}
+    \kappa^2 = -\left(\frac{\alpha f_0}{h_0V} + \frac{\pdd{x}V}{V}\right)
+\end{equation*}
 \end{frame}
 
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{example}
+\begin{frame}{Baroclinic flow}
+Use the linear baroclinic quasi geostropic vorticity equation. 
+Look at a meridional mean flow over a sloping bottom with a canyon: 
+\begin{equation*}
+    \mathbf{u} = u'\mathbf{i} + \left(V(x)+v'(z)\right)\mathbf{j} \qquad h = \alpha x + h_T(y)
+\end{equation*}
+%Assume a solution on the form
+%\begin{equation*}
+%    \psi' = \operatorname{Re}\left[\sum_{k,l,\omega} \hat{\psi}_{k,l}(z)e^{ikx+ily}\right]
+%\end{equation*}
+The Fourier coefficients of the streamfunction response can be written as
+\begin{multline*}\label{eq:baroclinic:sol}
+    \hat{\psi}(z) = \hat{h}N\left(\left(\kappa^2 + \frac{\pdd{x}V}{V_0} \right)^{\frac{1}{2}} + \frac{f_0\pd{z}V}{NV_b} + \frac{\alpha N}{V_b} - i\frac{rN\kappa^2}{V_bl}\right)^{-1}e^{-\mu z},\\ \mu = \frac{N}{|f_0|}\left( \kappa^2+\frac{\pdd{x}V_0}{V_0}\right)^{\frac{1}{2}} 
+\end{multline*}
+Arrested wave number:
+\begin{equation*}
+    \kappa^2 = \left(-\frac{f_0\pd{z}V}{NV_b} - \frac{\alpha N}{V_b}\right)^2 - \frac{\pdd{x}V}{V_0}
+\end{equation*}
 \end{frame}
 
-%------------------------------------------------
+\begin{frame}
+\frametitle{Amplitude and phase specters}
+\begin{figure}
+\centering
+\includegraphics{figures/amplitude_phase.pdf}
+\end{figure}
+\end{frame}
+
+\section{Numerical experiments}
+\begin{frame}
+\frametitle{Model bathymetry}
+\begin{figure}
+\centering
+\includegraphics[clip, trim=0 0 0 0.3cm, width=0.8\textwidth]{figures/bathymetry.pdf}
+\end{figure}
+\end{frame}
+
+\section{Results}
+
+\subsection{General flow pattern}
+\begin{frame}
+\frametitle{Figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/mean_streamlines_canyon_z95_40-50.pdf}
+\end{figure}
+\end{frame}
+
+\subsection{Comparison with QG theory}
+\begin{frame}
+\frametitle{Figure}
+\begin{figure}
+\centering
+\includegraphics{figures/Unstratified_theoreticalVSmodel_wave_length.pdf}
+\end{figure}
+\end{frame}
 
 \begin{frame}
 \frametitle{Figure}
 \begin{figure}
 \centering
-\includegraphics[width=0.8\linewidth]{figures/example_figure.pdf}
+\includegraphics{figures/Stratified_theoreticalVSmodel_wave_length_xzshear.pdf}
 \end{figure}
 \end{frame}
 
-%------------------------------------------------
+\subsection{Cross-slope tracer transport}
 
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
+\section{Discussion}
 
-This statement requires citation \cite{p1}.
-\end{frame}
-
-%------------------------------------------------
+\section{Conclusion}
 
 \begin{frame}
 \frametitle{References}
