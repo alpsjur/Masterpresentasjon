@@ -147,15 +147,6 @@ University of Oslo \\ % Your institution for the title page
 \end{figure}
 \end{frame}
 
-\begin{frame}{Bleik Canyon showing 180 documented sightings of sperm whales}
-    \begin{figure}
-    \centering
-    \includegraphics[width = 0.8\textwidth]{figures/whalesitings_bleikdjupet.pdf}
-    %\missingfigure{Insert map of LoVe bathymtry here.}
-    \caption{Figure from Ciano and Huele, 2001.} %\cite{CianoJ.N2001POSW}}
-\end{figure}
-\end{frame}
-
 \begin{frame}{The Lofoten-Vesterålen ocean region}
 \begin{figure}
     \centering
@@ -168,9 +159,10 @@ University of Oslo \\ % Your institution for the title page
 \column{0.65\linewidth}
 \begin{itemize}
     \item Submarine canyons are steep-sided valleys cut into the seabed of a continental slope.
-    \item There is an asymmetrical response to along-shore flow in opposite direction. 
+    \item There is an asymmetrical response to along-shore flow in opposite directions. 
     \item When the flow is retrograde, submarine canyons significantly alter the flow.
-    \item Zang and Lentz (2017) suggests this behaviour is due to arrested topographic waves.
+    \item Zhang and Lentz (2017) suggests this behaviour is due to arrested topographic waves.
+    \item Related problem: Atmospheric mountain-waves. 
 \end{itemize}
 \column{0.35\linewidth}
 \begin{figure}
@@ -181,6 +173,15 @@ University of Oslo \\ % Your institution for the title page
 \end{columns}
 \end{frame}
 
+%\begin{frame}{Bleik Canyon showing 180 documented sightings of sperm whales}
+%    \begin{figure}
+%    \centering
+%    \includegraphics[width = 0.8\textwidth]{figures/whalesitings_bleikdjupet.pdf}
+    %\missingfigure{Insert map of LoVe bathymtry here.}
+%    \caption{Figure from Ciano and Huele, 2001.} %\cite{CianoJ.N2001POSW}}
+%\end{figure}
+%\end{frame}
+
 \subsection{Research questions}
 
 \begin{frame}{Research questions}
@@ -189,35 +190,73 @@ University of Oslo \\ % Your institution for the title page
     \item How does high eddy-activity affect the cross-slope exchange due to a submarine canyon?
     \item What is the effect of periods of reversed wind on the cross-slope exchange under mean prograde flow over a canyon? 
 \end{itemize}
+
 \end{frame}
+
+%\subsection{Methods}
+%\begin{frame}{Methods}
+%    \begin{columns}
+%\column{0.65\linewidth}
+
+%\begin{itemize}
+%    \item Use quasi-geostrophy to describe arrested topographic waves
+%    \begin{itemize}
+%        \item Compare theoretical response with numerical model runs
+%    \end{itemize}
+%    \item Run simulations of wind-forced flow over a canyon using ROMS
+%    \begin{itemize}
+%        \item Let run for longer period
+%        \item Reverse wind for a short period
+%    \end{itemize}
+%    \item Cross-slope water exchange was approximated by computing the cross-slope transport of a passive tracer. 
+%\end{itemize}
+%\column{0.35\linewidth}
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{figures/ROMS_logo.png}
+%\end{figure}
+%\end{columns}
+%\end{frame}
 
 \section{Theoretical model}
 
+\begin{frame}{Quasi Geostrophy}
+Assumptions:
+    \begin{itemize}
+        \item Flow in close to geostrophic balance, i.e. small Rossby number.
+        \item Variations in the Coriolis parameter are small.
+        \item Variations in the boundaries are small compared to the total depth. 
+    \end{itemize}
+From these assumptions, we can derive the quasi-geostrophic potential vorticity equations. Here, we have to distinguish between a 1-layer model (barotropic) and a stratified model (baroclinic).
+\end{frame}
+
+\subsection{Barotropic flow}
 \begin{frame}{Barotropic flow}
 Use the linear barotropic quasi geostrophic vorticity equation. 
 Look at a meridional mean flow over a sloping bottom with a canyon: 
 \begin{equation*}
-    \mathbf{u} = u'\mathbf{i} + \left(V(x)+v'\right)\mathbf{j} \qquad h = \alpha x + h_T(y)
+    \mathbf{u} = u'\mathbf{i} + \left(V(x)+v'\right)\mathbf{j} \qquad h = \alpha x + h_T'(x,y)
 \end{equation*}
 Assume a solution on the form
 \begin{equation*}
-    \psi' = \operatorname{Re}\left[\sum_{k,l,\omega} \hat{\psi}_{k,l}e^{ikx+ily}\right]
+    \psi' = \operatorname{Re}\left[\sum_{k,l} \hat{\psi}_{k,l}e^{ikx+ily}\right]
 \end{equation*}
 The Fourier coefficients of the streamfunction response can be written as
 \begin{equation*}
-    \hat{\psi}_{k,l} = \hat{h}_{k,l}\frac{f_0}{h_0}\left( \kappa^2 + \frac{f_0\alpha}{h_0V} + \frac{\pdd{x}V}{V} - i \frac{r\kappa^2}{Vl}\right)^{-1}
+    \hat{\psi}_{k,l} = \hat{h}_{k,l}\frac{f_0}{h_0}\left( \kappa^2 + \frac{\alpha f_0}{h_0V} + \frac{\pdd{x}V}{V} - i \frac{r\kappa^2}{Vl}\right)^{-1}, \qquad \kappa^2 = k^2+l^2 
 \end{equation*}
 Arrested wave number:
 \begin{equation*}
-    \kappa^2 = -\left(\frac{\alpha f_0}{h_0V} + \frac{\pdd{x}V}{V}\right)
+    \kappa_{s,bt}^2 = -\left(\frac{\alpha f_0}{h_0V} + \frac{\pdd{x}V}{V}\right)
 \end{equation*}
 \end{frame}
 
+\subsection{Baroclinic flow}
 \begin{frame}{Baroclinic flow}
 Use the linear baroclinic quasi geostropic vorticity equation. 
 Look at a meridional mean flow over a sloping bottom with a canyon: 
 \begin{equation*}
-    \mathbf{u} = u'\mathbf{i} + \left(V(x)+v'(z)\right)\mathbf{j} \qquad h = \alpha x + h_T(y)
+    \mathbf{u} = u'\mathbf{i} + \left(V(x,z)+v'\right)\mathbf{j} \qquad h = \alpha x + h_T'(x,y)
 \end{equation*}
 %Assume a solution on the form
 %\begin{equation*}
@@ -225,11 +264,11 @@ Look at a meridional mean flow over a sloping bottom with a canyon:
 %\end{equation*}
 The Fourier coefficients of the streamfunction response can be written as
 \begin{multline*}\label{eq:baroclinic:sol}
-    \hat{\psi}(z) = \hat{h}N\left(\left(\kappa^2 + \frac{\pdd{x}V}{V_0} \right)^{\frac{1}{2}} + \frac{f_0\pd{z}V}{NV_b} + \frac{\alpha N}{V_b} - i\frac{rN\kappa^2}{V_bl}\right)^{-1}e^{-\mu z},\\ \mu = \frac{N}{|f_0|}\left( \kappa^2+\frac{\pdd{x}V_0}{V_0}\right)^{\frac{1}{2}} 
+    \hat{\psi}_{k,l}(z) = \hat{h}_{k,l}N\left(\left(\kappa^2 + \frac{\pdd{x}V}{V_0} \right)^{\frac{1}{2}} + \frac{f_0\pd{z}V}{NV_b} + \frac{\alpha N}{V_b} - i\frac{rN\kappa^2}{V_bl}\right)^{-1}e^{-\mu z},\\ \mu = \frac{N}{|f_0|}\left( \kappa^2+\frac{\pdd{x}V_0}{V_0}\right)^{\frac{1}{2}} 
 \end{multline*}
 Arrested wave number:
 \begin{equation*}
-    \kappa^2 = \left(-\frac{f_0\pd{z}V}{NV_b} - \frac{\alpha N}{V_b}\right)^2 - \frac{\pdd{x}V}{V_0}
+    \kappa_{s,bc}^2 = \left(-\frac{f_0\pd{z}V}{NV_b} - \frac{\alpha N}{V_b}\right)^2 - \frac{\pdd{x}V}{V_0}
 \end{equation*}
 \end{frame}
 
@@ -238,6 +277,33 @@ Arrested wave number:
 \begin{figure}
 \centering
 \includegraphics{figures/amplitude_phase.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Theoretical response}
+\begin{columns}[t]
+\column{0.5\textwidth}
+\textbf{Retrograde}
+\begin{itemize}
+    \item Resonance can occur between the topography and the arrested wave.
+    \item The resonant streamfunction is 90\textdegree out of phase with the topography.
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Prograde}
+\begin{itemize}
+    \item The streamlines resembles the topography, acting as a long-pass filter.
+    \item As the corresponding arrested wave number decreases, the flow becomes smoother.
+\end{itemize}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Streamfunction response to a canyon}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/unstratified_psi(y).pdf}
 \end{figure}
 \end{frame}
 
@@ -250,28 +316,71 @@ Arrested wave number:
 \end{figure}
 \end{frame}
 
+%\begin{frame}
+%\frametitle{Tracer distribution and model levels}
+%\begin{figure}
+%\centering
+%\includegraphics{figures/s-levels_tracers.pdf}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}
+\frametitle{Forcing}
+\begin{figure}
+\centering
+\includegraphics{figures/forcing.pdf}
+\end{figure}
+\end{frame}
+
 \section{Results}
 
 \subsection{General flow pattern}
-\begin{frame}
-\frametitle{Figure}
+
+\begin{frame}{Mean streamlines between day 40 and 50}
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{figures/mean_streamlines_canyon_z95_40-50.pdf}
 \end{figure}
 \end{frame}
 
+%\begin{frame}{Hovmöller diagrams of SSH anomalies, unstratified system}
+%\begin{figure}
+%\centering
+%\includegraphics{figures/Unstratified_zeta_hovmoller.pdf}
+%\end{figure}
+%\end{frame}
+
+%\begin{frame}{Hovmöller diagrams of SSH anomalies, stratified system}
+%\begin{figure}
+%\centering
+%\includegraphics{figures/Stratified_zeta_hovmoller.pdf}
+%\end{figure}
+%\end{frame}
+
 \subsection{Comparison with QG theory}
-\begin{frame}
-\frametitle{Figure}
+
+\begin{frame}{Streamlines for prograde flow in an unstratified system}
+\begin{figure}
+\centering
+\includegraphics{figures/streamlines_Unstratified_z95_from_south_canyon_period1_k.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Streamlines for prograde flow in a stratified system}
+\begin{figure}
+\centering
+\includegraphics{figures/streamlines_Stratified_z95_from_south_canyon_period1_k.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Unstratified system: theoretical vs. modeled wave length}
 \begin{figure}
 \centering
 \includegraphics{figures/Unstratified_theoreticalVSmodel_wave_length.pdf}
 \end{figure}
 \end{frame}
 
-\begin{frame}
-\frametitle{Figure}
+\begin{frame}{Stratified system: theoretical vs. modeled wave length}
 \begin{figure}
 \centering
 \includegraphics{figures/Stratified_theoreticalVSmodel_wave_length_xzshear.pdf}
@@ -280,9 +389,83 @@ Arrested wave number:
 
 \subsection{Cross-slope tracer transport}
 
+\begin{frame}{Early stages: cumulative tracer transport}
+\begin{figure}
+\centering
+\includegraphics{figures/Huon_dye_01_cumulative_transport_baseline.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Early stages: cumulative tracer transport, model run - no model run}
+\begin{figure}
+\centering
+\includegraphics{figures/Huon_dye_01_cumulative_transport_diff_baseline.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Evolution of EKE and MKE}
+\begin{figure}
+\centering
+\includegraphics{figures/EKE_MKE_temporal_mean_Stratified.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Turbulent stages: retrograde tracer transport}
+\begin{figure}
+\centering
+\includegraphics{figures/exchange_Retrograde_composite_Stratified.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Turbulent stages: prograde tracer transport}
+\begin{figure}
+\centering
+\includegraphics{figures/exchange_Prograde_composite_Stratified.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Wind event: prograde tracer transport}
+\begin{figure}
+\centering
+\includegraphics{figures/exchange_Prograde_composite_Event.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Wind event: bottom velocity and EKE}
+\begin{figure}
+\centering
+\includegraphics{figures/v_eke_Prograde_composite_Event.pdf}
+\end{figure}
+\end{frame}
+
 \section{Discussion}
 
+\subsection{Applicability to LoVe}
+\begin{frame}{Applicability to LoVe}
+\begin{itemize}
+    \item There are episodically reversal of winds in LoVe
+    \item Role of multiple succeeding canyons 
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/dybdedata_lite.pdf}
+\end{figure}
+
+\end{frame}
+
 \section{Conclusion}
+\begin{frame}{Conclusion}
+\begin{itemize}
+    \item There is generally good agreement between theoretical, quasi-geostrophic models and numerical model runs.
+    \item A canyon enhances the cross-slope tracer transport under retrograde flow conditions, also in a highly turbulent field.
+    \item With the presence of periods of reversed winds, a canyon enhanced the transport, also under prograde conditions.
+\end{itemize} 
+\end{frame}
+
+
+
+
 
 \begin{frame}
 \frametitle{References}
@@ -304,15 +487,15 @@ Arrested wave number:
 %----------------------------------------------------------------------------------------
 %   SUPPLEMENTARY SLIDES
 %----------------------------------------------------------------------------------------
-\appendix
+%\appendix
 
-\begin{frame}{Supplementary figure}
-This slide is not part of total slide count or the navigational panel.
-\begin{figure}
-    \centering
-    \missingfigure{Insert supplementary figure here.}
-\end{figure}
-\end{frame}
+%\begin{frame}{Supplementary figure}
+%This slide is not part of total slide count or the navigational panel.
+%\begin{figure}
+%    \centering
+%    \missingfigure{Insert supplementary figure here.}
+%\end{figure}
+%\end{frame}
 
 %----------------------------------------------------------------------------------------
 
